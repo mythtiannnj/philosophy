@@ -1,0 +1,44 @@
+{
+  "site": {
+    "name": "Philosophy Explorer",
+    "tagline": "Wisdom from the world's great thinkers",
+    "apiBase": "https://philosophersapi.com/api",
+    "apiAttribution": "PhilosophersAPI.com",
+    "version": "1.0.0"
+  },
+  "admin": {
+    "profile": {
+      "name": "Chris",
+      "verified": true,
+      "avatar": "https://iili.io/nRjM60b.jpg",
+      "role": "Founder & Curator",
+      "location": "Manila, Philippines",
+      "joined": "2025",
+      "bio": "Philosopher, curator, and lifelong student of ideas. I built Philosophy Explorer to make the wisdom of history's greatest thinkers accessible to everyone — from the agora of Athens to the seminar rooms of modernity. I believe philosophy is not a museum of dusty ideas but a living toolkit for navigating existence, ethics, and the good life. When I'm not reading Plato or Nietzsche, I'm writing about how ancient wisdom can illuminate modern problems.",
+      "quote": "The unexamined life is not worth living.",
+      "quoteAuthor": "Socrates",
+      "links": {
+        "website": "https://philosophersapi.com",
+        "twitter": "https://twitter.com",
+        "github": "https://github.com",
+        "email": "chris@philosophyexplorer.dev"
+      }
+    },
+    "stats": {
+      "refreshIntervalMs": 60000,
+      "showEndpoints": true,
+      "showSystemLog": true,
+      "showPreferences": true
+    },
+    "endpoints": [
+      { "method": "GET", "path": "/api/philosophers", "desc": "Full philosopher directory", "active": true },
+      { "method": "GET", "path": "/api/quotes",       "desc": "Notable philosophical quotes", "active": true },
+      { "method": "GET", "path": "/api/keyideas",     "desc": "Key ideas by thinker",         "active": true }
+    ],
+    "preferences": [
+      { "id": "autoRefresh", "name": "Auto-refresh Dashboard", "desc": "Poll the API every 60 seconds for new data.", "default": false },
+      { "id": "cache",       "name": "Cache Responses",        "desc": "Store responses locally for faster reloads.", "default": true },
+      { "id": "verbose",     "name": "Verbose Logging",        "desc": "Include detailed request traces in the log.", "default": false }
+    ]
+  }
+}
