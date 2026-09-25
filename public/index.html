@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome · Philosophy Explorer</title>
+  <link rel="icon" href="/assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/themes.css" />
+  <link rel="stylesheet" href="/assets/css/menu.css" />
+  <style>
+    /* Landing-specific */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1.5rem 3rem;
+      position: relative;
+    }
+    .hero-inner { max-width: 720px; width: 100%; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      background: rgba(34, 211, 238, 0.08);
+      border: 1px solid rgba(34, 211, 238, 0.28);
+      margin-bottom: 1.6rem;
+    }
+    .hero-badge .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 8px var(--accent-emerald);
+    }
+
+    .hero-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px; height: 100px;
+      border-radius: 26px;
+      margin-bottom: 1.6rem;
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.18), rgba(96, 165, 250, 0.08));
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      color: var(--accent-cyan);
+      font-size: 2.8rem;
+      box-shadow: 0 0 60px -12px rgba(34, 211, 238, 0.55),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      animation: reveal 0.8s var(--transition) both;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.6rem, 6vw, 4.4rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+      color: var(--text-dim);
+      max-width: 560px;
+      margin: 0 auto 2.4rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.9rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: 14px;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: 1px solid transparent;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      color: #0b0f19;
+      box-shadow: 0 12px 32px -12px rgba(34, 211, 238, 0.65);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 42px -12px rgba(34, 211, 238, 0.85);
+    }
+    .btn-ghost {
+      background: var(--panel);
+      color: var(--text);
+      border-color: var(--border);
+      backdrop-filter: blur(12px);
+    }
+    .btn-ghost:hover {
+      border-color: rgba(34, 211, 238, 0.45);
+      color: var(--accent-cyan);
+      box-shadow: 0 0 30px -10px rgba(34, 211, 238, 0.5);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .hero-stat {
+      padding: 1.1rem 0.9rem;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .hero-stat .num {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .hero-stat .lbl {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    .hero-footer {
+      position: absolute;
+      bottom: 1.6rem;
+      left: 0; right: 0;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 540px) {
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .hero-stat:last-child { grid-column: span 2; }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <div class="ambient">
+    <div class="blob blob-cyan"></div>
+    <div class="blob blob-blue"></div>
+    <div class="blob blob-purple"></div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="brand">
+      <span class="brand-mark"><i class="fas fa-brain"></i></span>
+      <div class="brand-text">Philosophy <small>Explorer</small></div>
+    </div>
+    <div class="topbar-right">
+      <div class="theme-toggle" role="tablist" aria-label="Theme">
+        <button data-theme="dark" class="active" aria-label="Dark glass">
+          <i class="fas fa-circle-half-stroke"></i> Dark
+        </button>
+        <button data-theme="glass" aria-label="Transparent glass">
+          <i class="fas fa-droplet"></i> Glass
+        </button>
+      </div>
+      <button class="icon-btn hamburger" id="hamburger-btn" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path class="menu-line top-line" d="M4 6h16"/>
+          <path class="menu-line middle-line" d="M4 12h16"/>
+          <path class="menu-line bottom-line" d="M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Drawer -->
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <aside class="drawer" id="drawer" aria-label="Navigation">
+    <div class="drawer-header">
+      <div class="brand">
+        <span class="brand-mark"><i class="fas fa-brain"></i></span>
+        <div>
+          <h2>Philosophy</h2>
+          <small>Explorer</small>
+        </div>
+      </div>
+      <button class="icon-btn" id="drawer-close" aria-label="Close menu">
+        <i class="fas fa-xmark"></i>
+      </button>
+    </div>
+    <div class="drawer-body">
+      <div class="drawer-section-label">Navigation</div>
+      <nav class="drawer-nav">
+        <a href="/" class="active">
+          <span class="nav-icon"><i class="fas fa-house"></i></span>
+          <span class="nav-label">Home <small>Welcome page</small></span>
+        </a>
+        <a href="/philosophy">
+          <span class="nav-icon"><i class="fas fa-book-open"></i></span>
+          <span class="nav-label">Philosophy <small>Explore thinkers</small></span>
+        </a>
+        <a href="/admin">
+          <span class="nav-icon"><i class="fas fa-shield-halved"></i></span>
+          <span class="nav-label">Admin <small>Control panel</small></span>
+        </a>
+      </nav>
+    </div>
+    <div class="drawer-footer">
+      <span class="status-dot"></span>
+      PhilosophersAPI · Online
+    </div>
+  </aside>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge animate-reveal">
+        <span class="dot"></span> Welcome, seeker of wisdom
+      </div>
+
+      <div class="hero-icon"><i class="fas fa-brain"></i></div>
+
+      <h1 class="animate-reveal" style="animation-delay:0.1s;">
+        <span class="brand-gradient-text">Philosophy Explorer</span>
+      </h1>
+
+      <p class="hero-sub animate-reveal" style="animation-delay:0.2s;">
+        Journey through the minds that shaped human thought. Discover timeless
+        quotes, biographies, and key ideas from antiquity to the modern era.
+      </p>
+
+      <div class="hero-actions animate-reveal" style="animation-delay:0.3s;">
+        <a href="/philosophy" class="btn btn-primary">
+          <i class="fas fa-compass"></i> Begin Exploring
+        </a>
+        <a href="/admin" class="btn btn-ghost">
+          <i class="fas fa-shield-halved"></i> Admin
+        </a>
+      </div>
+
+      <div class="hero-stats animate-reveal" style="animation-delay:0.4s;">
+        <div class="hero-stat glass">
+          <div class="num">100+</div>
+          <div class="lbl">Philosophers</div>
+        </div>
+        <div class="hero-stat glass">
+          <div class="num">500+</div>
+          <div class="lbl">Quotes</div>
+        </div>
+        <div class="hero-stat glass">
+          <div class="num">∞</div>
+          <div class="lbl">Ideas</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-footer">Powered by PhilosophersAPI.com</div>
+  </section>
+
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/menu.js"></script>
+</body>
+</html>
